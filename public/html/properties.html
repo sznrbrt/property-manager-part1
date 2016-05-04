@@ -8,8 +8,8 @@
         <h5>Status:</h5>
         <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({status: 'Available'})">Show only available properties</button>
         <h5>Rooms:</h5>
-        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({roomNum: {$lt: 3}})">Rooms > 3</button><br>
-        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({roomNum: {$lt: 5}})">Rooms > 5</button><br>
+        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({roomNum: {$gt: 3}})">Rooms > 3</button><br>
+        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({roomNum: {$gt: 5}})">Rooms > 5</button><br>
         <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({roomNum: {$gt: 8}})">Rooms > 8</button>
         <h5>Rent price:</h5>
         <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({rentPrice: {$lt: 600}})">Rent price < $600</button><br>
@@ -110,8 +110,8 @@
                   <td>{{ property.status }}</td>
                   <td>{{ property.address }}</td>
                   <td>{{ property.roomNum }}</td>
-                  <td>{{ property.rentPrice }}</td>
-                  <td>{{ property.utilCost }}</td>
+                  <td>{{ property.rentPrice | currency }}</td>
+                  <td>{{ property.utilCost | currency }}</td>
                   <td>{{ property.tenants }}</td>
                   <td ng-click="removeProp(property)"><span class="glyphicon glyphicon-remove"></span></td>
                   <td ng-click="editProp(property)"><span class="glyphicon glyphicon-pencil"></span></td>
