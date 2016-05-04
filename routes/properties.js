@@ -7,9 +7,21 @@ var Property = require('../models/property');
 
 // GET /api/properties
 router.get('/', (req, res) => {
-  Property.find({}, (err, properties) => {
-    return err ? res.status(400).send(err) : res.send(properties);
-  });
+  Property
+    .find({})
+    .exec((err, properties) => {
+      return err ? res.status(400).send(err) : res.send(properties);
+    });
+})
+
+// GET /api/properties
+router.post('/filtered', (req, res) => {
+  var find = req.body || {};
+  Property
+    .find(find)
+    .exec((err, properties) => {
+      return err ? res.status(400).send(err) : res.send(properties);
+    });
 })
 
 // POST /api/properties
@@ -37,6 +49,8 @@ router.put('/:id', (req, res) => {
     else res.send(property);
   })
 })
+
+
 
 
 module.exports = router;

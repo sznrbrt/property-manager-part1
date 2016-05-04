@@ -3,7 +3,23 @@
 
     <div class="col-md-2 sidebar">
       <div class="row text-left sidebarContent">
-        <h4>Show results for:</h4>
+        <h4><b>Show results for:</b></h4>
+        <button type="button" class="btn btn-link filterButton" ng-click="showAll()"><b>Show All</b></button>
+        <h5>Status:</h5>
+        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({status: 'Available'})">Show only available properties</button>
+        <h5>Rooms:</h5>
+        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({roomNum: {$lt: 3}})">Rooms > 3</button><br>
+        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({roomNum: {$lt: 5}})">Rooms > 5</button><br>
+        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({roomNum: {$gt: 8}})">Rooms > 8</button>
+        <h5>Rent price:</h5>
+        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({rentPrice: {$lt: 600}})">Rent price < $600</button><br>
+        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({rentPrice: {$lt: 1200}})">Rent price < $1200</button><br>
+        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({rentPrice: {$gt: 1200}})">Rent price > $1200</button>
+        <h5>Utility cost:</h5>
+        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({utilCost: {$lt: 150}})">Utility cost < $150</button><br>
+        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({utilCost: {$lt: 300}})">Utlitiy cost < $300</button><br>
+        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({utilCost: {$gt: 300}})">Utility cost > $300</button>
+
       </div>
     </div>
 
@@ -58,7 +74,7 @@
             </div>
             <div class="form-group">
              <div class="col-sm-offset-2 col-sm-10">
-               <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+               <button class="btn btn-danger" ng-click="clear()">Cancel</button>
                <button class="btn btn-warning" ng-click="addNewProperty()">Add</button>
              </div>
            </div>
@@ -90,7 +106,7 @@
                 <th></th>
               </thead>
               <tbody>
-                <tr ng-repeat="property in properties | filter:searchFilter | orderBy:category track by $index">
+                <tr ng-repeat="property in properties | filter:searchFilter track by $index">
                   <td>{{ property.status }}</td>
                   <td>{{ property.address }}</td>
                   <td>{{ property.roomNum }}</td>
@@ -98,7 +114,7 @@
                   <td>{{ property.utilCost }}</td>
                   <td>{{ property.tenants }}</td>
                   <td ng-click="removeProp(property)"><span class="glyphicon glyphicon-remove"></span></td>
-                  <td ng-click="edit(property)"><span class="glyphicon glyphicon-pencil"></span></td>
+                  <td ng-click="editProp(property)"><span class="glyphicon glyphicon-pencil"></span></td>
                 </tr>
               </tbody>
             </table>

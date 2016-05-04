@@ -12,9 +12,31 @@ app.controller('propertiesCtrl', function($scope, $rootScope, $state, $statePara
       console.error(err);
     });
 
+  $scope.showAll = () => {
+    Properties.getAll()
+    .then((res) => {
+      $scope.properties = res.data;
+    })
+    .catch(err => {
+      console.error(err);
+    });
+  }
+
   $scope.openAddProperty = () => {
     $scope.addingProperty = true;
   }
+
+  $scope.showOnlyFiltered = (filterObj) => {
+    Properties.getFiltered(filterObj)
+      .then((res) => {
+        $scope.properties = res.data;
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+
 
   $scope.addNewProperty = () => {
     var newProp = $scope.newProperty;
@@ -41,6 +63,7 @@ app.controller('propertiesCtrl', function($scope, $rootScope, $state, $statePara
   }
 
   $scope.editProp = function (property) {
+    console.log(property);
     StoreData.set(property);
     $state.go('editproperty', {'id': property._id});
   }
@@ -82,6 +105,26 @@ app.controller('clientsCtrl', function($scope, $rootScope, $state, $stateParams,
     .catch(err => {
       console.error(err);
     });
+
+  $scope.showAll = () => {
+    Clients.getAll()
+      .then((res) => {
+        $scope.clients = res.data;
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+  $scope.showOnlyFiltered = (filterObj) => {
+    Clients.getFiltered(filterObj)
+      .then((res) => {
+        $scope.clients = res.data;
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
 
   $scope.openAddClient = () => {
     $scope.addingClient = true;

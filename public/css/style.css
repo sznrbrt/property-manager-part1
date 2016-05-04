@@ -9,6 +9,10 @@ html, body, .container-fluid, .row {
     height: 100%;
 }
 
+.panel {
+  margin-top: 10px;
+}
+
 .sidebar {
   background-color: #F7941D;
   padding-top: 40px;
@@ -72,4 +76,10 @@ html, body, .container-fluid, .row {
 .search {
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.filterButton {
+  padding: 0;
+  font-size: 90%;
+  color:white;
 }

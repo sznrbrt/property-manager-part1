@@ -7,6 +7,9 @@ app.service('Properties', function($http) {
   this.getAll = () => {
     return $http.get('./api/properties/');
   }
+  this.getFiltered = (filterObj) => {
+    return $http.post('./api/properties/filtered', filterObj);
+  }
   this.create = (property) => {
     return $http.post('/api/properties/', property);
   }
@@ -22,6 +25,9 @@ app.service('Clients', function($http) {
 
   this.getAll = () => {
     return $http.get('./api/clients/');
+  }
+  this.getFiltered = (filterObj) => {
+    return $http.post('./api/clients/filtered', filterObj);
   }
   this.create = (client) => {
     return $http.post('/api/clients/', client);

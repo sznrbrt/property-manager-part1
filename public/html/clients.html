@@ -3,7 +3,16 @@
 
     <div class="col-md-2 sidebar">
       <div class="row text-left sidebarContent">
-        <h4>Show results for:</h4>
+        <h4><b>Show results for:</b></h4>
+        <button type="button" class="btn btn-link filterButton" ng-click="showAll()"><b>Show All</b></button>
+        <h5>Status:</h5>
+        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({status:'Homeseeker'})">Show only homeseekers</button>
+        <h5>Room preference: </h5>
+        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({prefNumRooms: {$lt: 3}})">Rooms < 3</button><br>
+        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({prefNumRooms: {$gt: 3}})">Rooms > 3</button><br>
+        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({prefNumRooms: {$gt: 5}})">Rooms > 5</button><br>
+        <button type="button" class="btn btn-link filterButton" ng-click="showOnlyFiltered({prefNumRooms: {$gt: 8}})">Rooms > 8</button>
+
       </div>
     </div>
 
@@ -58,7 +67,7 @@
             </div>
             <div class="form-group">
              <div class="col-sm-offset-2 col-sm-10">
-               <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+               <button class="btn btn-danger" ng-click="clear()">Cancel</button>
                <button class="btn btn-warning" ng-click="addNewClient()">Add</button>
              </div>
            </div>

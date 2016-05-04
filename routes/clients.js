@@ -12,6 +12,16 @@ router.get('/', (req, res) => {
   });
 })
 
+// POST /api/clients/filtered
+router.post('/filtered', (req, res) => {
+  var find = req.body || {};
+  Client
+    .find(find)
+    .exec((err, clients) => {
+      return err ? res.status(400).send(err) : res.send(clients);
+    });
+})
+
 // POST /api/clients
 router.post('/', (req, res) => {
   var client = new Client(req.body);
