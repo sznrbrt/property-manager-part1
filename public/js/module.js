@@ -11,9 +11,19 @@ app.config(function($stateProvider, $urlRouterProvider){
       controller: 'propertiesCtrl',
     })
     .state('editproperty', {
-      url:'/editcard/:id',
+      url:'/editproperty/:id',
       templateUrl: '/html/editproperty.html',
       controller: 'editPropertyCtrl',
+    })
+    .state('clients', {
+      url:'/clients/',
+      templateUrl: '/html/clients.html',
+      controller: 'clientsCtrl',
+    })
+    .state('editclient', {
+      url:'/editclient/:id',
+      templateUrl: '/html/editclient.html',
+      controller: 'editClientCtrl',
     })
 
   $urlRouterProvider.otherwise('/');

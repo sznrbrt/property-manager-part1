@@ -1,0 +1,110 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-2 sidebar">
+      <div class="row text-left sidebarContent">
+        <h4>Show results for:</h4>
+      </div>
+    </div>
+
+    <div class="col-md-10 col-md-offset-2 content">
+      <div class="row">
+
+        <div class="col-xs-12 addPropPanel">
+          <button class="btn btn-default addProperty" ng-click="openAddClient()">
+            <span class="glyphicon glyphicon-plus"></span> Add client
+          </button>
+        </div>
+        <div class="col-xs-12" ng-if="addingClient">
+          <div class="row text-center">
+            <h4>New client:</h4>
+          </div>
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="email">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Enter the name" ng-model="newClient.name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="email">Email</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" placeholder="Enter email" ng-model="newClient.email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="email"># Phone</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Enter phonenumber" ng-model="newClient.phone">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="email">Prefered # of Rooms</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Enter preffered # of rooms" ng-model="newClient.prefNumRooms">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="email">Status</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Enter status" ng-model="newClient.status">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="email">Properties</label>
+              <div class="col-sm-10">
+                <input ng-disabled="true" type="text" class="form-control" placeholder="Soon you'll be able to add properties" ng-model="newClient.properties">
+              </div>
+            </div>
+            <div class="form-group">
+             <div class="col-sm-offset-2 col-sm-10">
+               <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+               <button class="btn btn-warning" ng-click="addNewClient()">Add</button>
+             </div>
+           </div>
+          </form>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group search">
+              <label>Search:</label>
+              <input type="text" class="form-control" ng-model='searchFilter'>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <table class="table table-hover">
+              <thead>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Preffered # of rooms</th>
+                <th>Status</th>
+                <th>Properties</th>
+                <th></th>
+                <th></th>
+              </thead>
+              <tbody>
+                <tr ng-repeat="client in clients | filter:searchFilter | orderBy:category track by $index">
+                  <td>{{ client.name }}</td>
+                  <td>{{ client.email }}</td>
+                  <td>{{ client.phone }}</td>
+                  <td>{{ client.prefNumRooms }}</td>
+                  <td>{{ client.status }}</td>
+                  <td>{{ client.properties }}</td>
+                  <td ng-click="removeClient(client)"><span class="glyphicon glyphicon-remove"></span></td>
+                  <td ng-click="editClient(client)"><span class="glyphicon glyphicon-pencil"></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>

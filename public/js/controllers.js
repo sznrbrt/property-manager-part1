@@ -3,19 +3,16 @@
 var app = angular.module('propertyManagerApp');
 
 app.controller('propertiesCtrl', function($scope, $rootScope, $state, $stateParams, Properties, StoreData) {
-  console.log('propertiesCtrl!');
   $scope.newProperty = {};
   Properties.getAll()
     .then((res) => {
       $scope.properties = res.data;
-      console.log($scope.properties);
     })
     .catch(err => {
       console.error(err);
     });
 
   $scope.openAddProperty = () => {
-    console.log('openAddProperty');
     $scope.addingProperty = true;
   }
 
@@ -71,6 +68,77 @@ app.controller('editPropertyCtrl', function($scope, $rootScope, Properties, $sta
     Properties.edit(input._id, input)
     .then(() => {
       $state.go('properties');
+    })
+  }
+
+})
+
+app.controller('clientsCtrl', function($scope, $rootScope, $state, $stateParams, StoreData, Clients) {
+  $scope.newClient = {};
+  Clients.getAll()
+    .then((res) => {
+      $scope.clients = res.data;
+    })
+    .catch(err => {
+      console.error(err);
+    });
+
+  $scope.openAddClient = () => {
+    $scope.addingClient = true;
+  }
+
+  $scope.addNewClient= () => {
+    var newClient = $scope.newClient;
+    if(!newClient.name || !newClient.email) return;
+    if(!newClient.phone || !newClient.prefNumRooms) return;
+
+    Clients.create(newClient)
+      .then((res) => {
+        $scope.clients.push(res.data);
+        $scope.clear();
+      });
+  }
+
+  $scope.removeClient = function (client) {
+    var index = $scope.clients.indexOf(client);
+    var id = client._id;
+    Clients.delete(id)
+    .then(() => {
+      $scope.clients.splice(index, 1);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+  }
+
+  $scope.editClient = function (client) {
+    StoreData.set(client);
+    $state.go('editclient', {'id': client._id});
+  }
+
+  $scope.clear = () => {
+    $scope.newClient = {};
+    $scope.addingClient = false;
+  }
+})
+
+app.controller('editClientCtrl', function($scope, $rootScope, Clients, $state, $stateParams, StoreData) {
+  var data = StoreData.get();
+  $scope.editedClient = angular.copy(data);
+
+  $scope.cancel = function() {
+    $state.go('clients');
+  }
+
+  $scope.reset = function() {
+    $scope.editedClient = angular.copy(data);
+  }
+
+  $scope.editClient = function() {
+    var input = $scope.editedClient;
+    Clients.edit(input._id, input)
+    .then(() => {
+      $state.go('clients');
     })
   }
 

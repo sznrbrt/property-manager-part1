@@ -18,15 +18,24 @@ app.service('Properties', function($http) {
   }
 })
 
+app.service('Clients', function($http) {
+
+  this.getAll = () => {
+    return $http.get('./api/clients/');
+  }
+  this.create = (client) => {
+    return $http.post('/api/clients/', client);
+  }
+  this.delete = (id) => {
+    return $http.delete(`/api/clients/${id}`);
+  }
+  this.edit = (id, editedClient) => {
+    return $http.put(`/api/clients/${id}`, editedClient);
+  }
+})
+
 app.service('StoreData', function($http) {
-
   var storeData = {};
-
-  this.get = () => {
-    return storeData;
-  }
-
-  this.set = (data) => {
-    storeData = data;
-  }
+  this.get = () => { return storeData }
+  this.set = (data) => { storeData = data }
 })
