@@ -1,0 +1,70 @@
+body {
+  font-family: 'Asap', sans-serif;
+  padding-top: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+html, body, .container-fluid, .row {
+    height: 100%;
+}
+
+.sidebar {
+  background-color: #F7941D;
+  padding-top: 40px;
+}
+
+@media (min-width: 992px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: block;
+    background-color: #F7941D;
+  }
+}
+
+.glyphicon {
+  margin-right: 5px;
+}
+
+.navbar-inverse {
+  background-color: #2E2934;
+  border-color: transparent;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color:white;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+  color:#DF7D24;
+}
+
+.logo {
+  vertical-align: middle;
+  line-height: 50px;
+  color: #F7941D;
+  font-size: 1.2em;
+  margin-right: 30px;
+}
+
+.sidebarContent {
+  padding: 10px;
+}
+
+.addProperty {
+  margin-top: 10px;
+  border-color: #F7941D;
+  border-width: 2px;
+}
+
+.addProperty:hover {
+  border-color: #F7941D;
+}
+
+.addPropPanel {
+  margin-bottom: 10px;
+}
