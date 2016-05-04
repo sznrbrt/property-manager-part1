@@ -17,3 +17,16 @@ app.service('Properties', function($http) {
     return $http.put(`/api/properties/${id}`, editedProperty);
   }
 })
+
+app.service('StoreData', function($http) {
+
+  var storeData = {};
+
+  this.get = () => {
+    return storeData;
+  }
+
+  this.set = (data) => {
+    storeData = data;
+  }
+})

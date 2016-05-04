@@ -10,6 +10,11 @@ app.config(function($stateProvider, $urlRouterProvider){
       templateUrl: '/html/properties.html',
       controller: 'propertiesCtrl',
     })
+    .state('editproperty', {
+      url:'/editcard/:id',
+      templateUrl: '/html/editproperty.html',
+      controller: 'editPropertyCtrl',
+    })
 
   $urlRouterProvider.otherwise('/');
 });
