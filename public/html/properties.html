@@ -101,7 +101,7 @@
                 <th># Rooms</th>
                 <th>Rent Price</th>
                 <th>Utility Cost</th>
-                <th>Tenants</th>
+                <th ng-hide='true'>Tenants</th>
                 <th></th>
                 <th></th>
               </thead>
@@ -112,7 +112,7 @@
                   <td>{{ property.roomNum }}</td>
                   <td>{{ property.rentPrice | currency }}</td>
                   <td>{{ property.utilCost | currency }}</td>
-                  <td>{{ property.tenants }}</td>
+                  <td ng-hide='true'>{{ property.tenants }}</td>
                   <td ng-click="removeProp(property)"><span class="glyphicon glyphicon-remove"></span></td>
                   <td ng-click="editProp(property)"><span class="glyphicon glyphicon-pencil"></span></td>
                 </tr>
