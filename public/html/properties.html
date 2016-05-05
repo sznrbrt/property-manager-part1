@@ -35,39 +35,43 @@
           <div class="row text-center">
             <h4>New Property:</h4>
           </div>
-          <form class="form-horizontal" role="form">
+          <form class="form-horizontal" role="form" ng-submit="addNewProperty()">
             <div class="form-group">
               <label class="control-label col-sm-2" for="email">Address</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="Enter the address" ng-model="newProperty.address">
+                <input type="text" class="form-control" placeholder="Enter the address" ng-model="newProperty.address" required>
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" for="email">Status</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="Enter the property's status" ng-model="newProperty.status">
+                <select ng-model="newProperty.status" placeholder="Enter the property's status" required>
+                  <option value="" disabled selected>Select the property's status</option>
+                  <option value="Available">Available</option>
+                  <option value="Occupied">Occupied</option>
+                </select>
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="email"># Rooms</label>
+              <label class="control-label col-sm-2"># Rooms</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="Enter the number of rooms" ng-model="newProperty.roomNum">
+                <input type="number" class="form-control" placeholder="Enter the number of rooms" ng-model="newProperty.roomNum" required>
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="email">Rent Price</label>
+              <label class="control-label col-sm-2">Rent Price</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="Enter the rent price" ng-model="newProperty.rentPrice">
+                <input type="number" class="form-control" placeholder="Enter the rent price" ng-model="newProperty.rentPrice" required>
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="email">Utility Cost</label>
+              <label class="control-label col-sm-2">Utility Cost</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="Enter the utility cost" ng-model="newProperty.utilCost">
+                <input type="number" class="form-control" placeholder="Enter the utility cost" ng-model="newProperty.utilCost" required>
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-sm-2" for="email">Add tenants</label>
+              <label class="control-label col-sm-2">Add tenants</label>
               <div class="col-sm-10">
                 <input ng-disabled="true" type="text" class="form-control" placeholder="Soon you'll be able to add tenants" ng-model="newProperty.tenants">
               </div>
@@ -75,7 +79,7 @@
             <div class="form-group">
              <div class="col-sm-offset-2 col-sm-10">
                <button class="btn btn-danger" ng-click="clear()">Cancel</button>
-               <button class="btn btn-warning" ng-click="addNewProperty()">Add</button>
+               <button class="btn btn-warning" type="submit">Add</button>
              </div>
            </div>
           </form>

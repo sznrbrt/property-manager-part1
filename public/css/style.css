@@ -5,6 +5,30 @@ body {
   padding-right: 10px;
 }
 
+input, select, option {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+input, select {
+    width:100%;
+    height:34px;
+    border : 1px #ccc solid;
+    vertical-align:top;
+}
+
+select#pulled {
+  width:79.5%;
+  position: relative;
+  left: 15px;
+}
+
+select#pulledClientSelect {
+  width:79.5%;
+  position: relative;
+  left: 15px;
+}
+
 html, body, .container-fluid, .row {
     height: 100%;
 }
